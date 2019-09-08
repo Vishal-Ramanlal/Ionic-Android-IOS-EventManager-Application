@@ -1,0 +1,49 @@
+<ion-header>
+  <ion-toolbar color="danger">
+    <ion-title>Home</ion-title>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-buttons slot="end">
+      <ion-button routerLink="/profile">
+        <ion-icon slot="icon-only" name="person"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
+  <ion-button expand="block" color="danger" routerLink="/menu/todo">
+    See All Tasks
+  </ion-button>
+  <ion-list>
+    <ng-container *ngIf="eventList === null">
+      <ion-list-header> <ion-label>No Events Today</ion-label> </ion-list-header>
+    </ng-container>
+    <ng-container *ngFor="let event of eventList; let i = index;">
+      <ng-container *ngIf="event.day != eventList[i-1]?.day">
+        <ng-container *ngIf="(event.startTime |  date :'yyyy-MM-dd') == (today |  date :'yyyy-MM-dd'); ">
+          <ion-item>Today</ion-item>
+
+
+      <ion-item tappable  routerLink="/event-detail/{{ event.id }}">
+        <ion-label>
+          <h2>{{ event?.name }}</h2>
+          <p>
+            description: <strong>{{ event?.description }}</strong>
+          </p>
+          <p>
+            Start Time: <strong>{{ event?.startTime | date : 'mediumTime' }}</strong>
+          </p>
+          <p>Day: {{event?.day}}</p>
+        </ion-label>
+      </ion-item>
+        </ng-container>
+      </ng-container>
+
+    </ng-container>
+  </ion-list>
+</ion-content>

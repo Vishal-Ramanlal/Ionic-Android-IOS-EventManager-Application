@@ -1,0 +1,61 @@
+<ion-header>
+  <ion-toolbar color="danger">
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>All Tasks</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
+  <ion-button expand="block" color="danger" routerLink="/event-create">
+    Create a Task
+  </ion-button>
+
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+    <ion-fab-button color ="danger" routerLink="/event-create">
+      <ion-icon name="add"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+
+  <ion-list>
+
+    <ng-container *ngIf="eventList != null">
+    <ion-list-header> <ion-label>Your next events</ion-label> </ion-list-header>
+    </ng-container>
+
+    <ng-container *ngFor="let event of eventList; let i = index;">
+      <ng-container *ngIf="event.day != eventList[i-1]?.day">
+        <ng-container *ngIf="(event.startTime |  date :'yyyy-MM-dd') == (today |  date :'yyyy-MM-dd'); ">
+          <ion-item>Today</ion-item>
+        </ng-container>
+        <ng-container *ngIf="(event.startTime |  date :'yyyy-MM-dd') == (tommorow |  date :'yyyy-MM-dd'); ">
+          <ion-item >Tomorrow</ion-item>
+        </ng-container>
+        <ng-container *ngIf="(event.startTime |  date :'yyyy-MM-dd') != (today |  date :'yyyy-MM-dd' ); ">
+          <ng-container *ngIf="(event.startTime |  date :'yyyy-MM-dd') != (tommorow |  date :'yyyy-MM-dd' ); ">
+          <ion-item >{{event.day}} -- {{event?.startTime | date :'yyyy-MM-dd'}}</ion-item>
+          </ng-container>
+        </ng-container>
+
+      </ng-container>
+    <ion-item tappable  routerLink="/event-detail/{{ event.id }}">
+      <ion-label>
+        <h2>{{ event?.name }}</h2>
+        <p>
+          description: <strong>{{ event?.description }}</strong>
+        </p>
+        <p>
+          Start Time: <strong>{{ event?.startTime | date :'yyyy-MM-dd' }}</strong>
+        </p>
+        <p>Day: {{event?.day}}</p>
+      </ion-label>
+    </ion-item>
+
+    </ng-container>
+
+  </ion-list>
+</ion-content>

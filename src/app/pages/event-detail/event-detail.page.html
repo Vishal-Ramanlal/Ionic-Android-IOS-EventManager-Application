@@ -1,0 +1,54 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>{{ currentEvent?.name }}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
+  <ion-item (click)="updateDescription()">
+    <ion-label>
+      <ion-grid>
+        <ion-row>
+          <ion-col class="text-left" size="5">Description </ion-col>
+          <ion-col class="text-center" size="7" *ngIf="currentEvent?.description">
+            {{ currentEvent?.description }}
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </ion-label>
+  </ion-item>
+
+  <ion-item>
+    <ion-label class="dob-label">Start Time</ion-label>
+    <ion-datetime
+            displayFormat="DD/MM/YYYY HH:mm"
+            pickerFormat="DD-MM-YYYYTHH:mmTZD"
+            [(ngModel)]="startTime"
+            (ionChange)="updateStartTime(startTime)"
+    >
+    </ion-datetime>
+  </ion-item>
+  <ion-item>
+    <ion-label class="dob-label">End Time</ion-label>
+    <ion-datetime
+            displayFormat="MM/DD/YYYY HH:mm"
+            pickerFormat="DD-MM-YYYYTHH:mmTZD"
+            [(ngModel)]="endTime"
+            (ionChange)="updateEndTime(endTime)"
+    >
+    </ion-datetime>
+  </ion-item>
+  <div id="map" style="width: 100%; height: 360px">
+
+  </div>
+  <ion-button expand="block" (click)="saveMap()">Save Map</ion-button>
+</ion-content>
+<ion-footer>
+  <ion-button expand="block" (click)="delete()">Delete</ion-button>
+</ion-footer>

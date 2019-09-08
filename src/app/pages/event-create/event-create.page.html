@@ -1,0 +1,47 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/home"></ion-back-button>
+    </ion-buttons>
+    <ion-title>New Event</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+
+<ion-content padding>
+  <ion-item>
+    <ion-label position="stacked">Event Name</ion-label>
+    <ion-input
+      [(ngModel)]="eventName"
+      type="text"
+      placeholder="What's your event's name?"
+    >
+    </ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label position="stacked">Event Description</ion-label>
+    <ion-input
+            [(ngModel)]="description"
+            type="text"
+            placeholder="Enter Description"
+    >
+    </ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label>Start Date</ion-label>
+    <ion-datetime [(ngModel)]="startTime"  displayFormat="MM/DD/YYYY HH:mm" pickerFormat="DD-MM-YYYYTHH:mmTZD" min="2017" max="2020-12-31"></ion-datetime>
+  </ion-item>
+  <ion-item>
+    <ion-label>End Date</ion-label>
+    <ion-datetime [(ngModel)]="endTime"  displayFormat="MM/DD/YYYY HH:mm" pickerFormat="DD-MM-YYYYTHH:mmTZD" min="2017" max="2020-12-31"></ion-datetime>
+  </ion-item>
+  <div id="map" style="width: 100%; height: 360px">
+    <button ion-button (click)="onButtonClick($event)">Demo</button>
+  </div>
+  <ion-button
+    expand="block"
+    (click)="createEvent()"
+  >
+    Create Event
+  </ion-button>
+</ion-content>

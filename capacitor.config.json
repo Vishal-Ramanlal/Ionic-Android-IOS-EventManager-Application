@@ -1,0 +1,6 @@
+{
+  "appId": "io.ionic.starter",
+  "appName": "event-manager-mwc2019",
+  "bundledWebRuntime": false,
+  "webDir": "www"
+}

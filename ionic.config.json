@@ -1,0 +1,8 @@
+{
+  "name": "event-manager-mwc2019",
+  "integrations": {
+    "cordova": {},
+    "capacitor": {}
+  },
+  "type": "angular"
+}
