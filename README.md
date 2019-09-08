@@ -9,5 +9,5 @@
   
 then use following command to run
 
-   Ionic cordova emulate browser
+    Ionic cordova emulate browser
  
