@@ -4,8 +4,8 @@
  Clone Repository
  
  Then use following command in directory using command line
-  npm install
+    npm install
   
 then use following command to run
- Ionic cordova emulate browser
+   Ionic cordova emulate browser
  
