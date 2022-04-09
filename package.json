@@ -43,7 +43,7 @@
     "leaflet": "^1.5.1",
     "leaflet-control-geocoder": "^1.8.3",
     "leaflet-geosearch": "^2.7.0",
-    "moment": "^2.24.0",
+    "moment": "^2.29.2",
     "rxjs": "~6.3.3",
     "zone.js": "~0.8.29"
   },
